@@ -207,6 +207,12 @@ php bin/console make:controller
 Cette commande vous invitera à entrer le nom du contrôleur que vous souhaitez créer. Par exemple, si vous souhaitez créer un contrôleur nommé `DefaultController`, vous pouvez simplement taper `DefaultController` lorsque vous y êtes invité.
 Une fois que vous avez entré le nom du contrôleur, Symfony générera automatiquement un fichier de contrôleur dans le répertoire `src/Controller` de votre projet, ainsi qu'un fichier de vue associé dans le répertoire `templates`.
 
+Pour voir la route créée automatiquement, vous pouvez utiliser la commande suivante :
+
+```bash
+php bin/console debug:router
+```
+
 Documentation officielle pour créer un contrôleur : [make:controller](https://symfony.com/doc/current/controller.html#creating-controllers)
 
 [Retour au menu](#menu)
