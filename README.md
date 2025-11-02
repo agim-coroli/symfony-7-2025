@@ -11,9 +11,10 @@ Cours de Symfony 7.3 (lors de l'installation) aux WebDev 2025.
 - [Installons la version --webapp avec composer](#installons-la-version--webapp-avec-composer)
 - [Création d'un nouveau projet Symfony 7.3 webapp](#création-dun-nouveau-projet-symfony-73-webapp)
 - [Création d'un controleur de base](#création-dun-controleur-de-base)
-  - [Exercice 1](#exercice-1)
+    - [Exercice 1](#exercice-1)
 - [Les routes](#les-routes)
   - [Les annotations de route](#les-annotations-de-route)
+  - [Les routes en YAML](#les-routes-en-yaml)
 
 ## Cours pour les webdev 2025
 
@@ -197,7 +198,7 @@ Vous pouvez accéder à votre application en ouvrant votre navigateur web et en 
 
 [Retour au menu](#menu)
 
-### Création d'un controleur de base
+## Création d'un controleur de base
 
 Pour créer un contrôleur de base dans Symfony, vous pouvez utiliser la commande suivante dans votre terminal depuis le répertoire de votre projet :
 
@@ -228,7 +229,7 @@ Documentation officielle pour créer un contrôleur : [make:controller](https://
 
 [Retour au menu](#menu)
 
-### Les routes
+## Les routes
 
 Les routes dans Symfony sont définies à l'aide d'`annotations`, de fichiers `YAML` ou `XML` (Le `XML` sera prochainement obsolète pour cet usage). Par défaut, lorsque vous créez un contrôleur avec la commande `make:controller`, une route est automatiquement créée pour la méthode `index` du contrôleur.
 
@@ -236,7 +237,7 @@ Les routes dans Symfony sont définies à l'aide d'`annotations`, de fichiers `Y
 
 [Retour au menu](#menu)
 
-#### Les annotations de route
+### Les annotations de route
 Voici un exemple d'annotation de route dans un contrôleur :
 
 ```php
@@ -257,11 +258,13 @@ class HomeController extends AbstractController
 
 [Retour au menu](#menu)
 
-#### Les routes en YAML
+### Les routes en YAML
 
 Nous pouvons aussi définir les routes dans un fichier YAML situé dans `config/routes.yaml` :
 
 ```yaml
 home:
     
+```
+
 
