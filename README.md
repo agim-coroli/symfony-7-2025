@@ -314,7 +314,11 @@ php bin/console debug:router
    }
    ```
 5. Dans le fichier `config/routes.yaml`, supprimez le code des annotations (qui y sont par défaut) et ajoutez une nouvelle route `yaml_index` qui mappe l'URL `/` à la méthode `index` du contrôleur `YamlController`.
-**ICI**
+6. Testez votre application en accédant à l'URL racine, vous ne devriez plus voir la page par défaut de Symfony, mais le message "Bienvenue sur la page YAML !" s'afficher.
+7. Créez une nouvelle méthode `about` dans le contrôleur `YamlController` qui renvoie une réponse avec le texte "Bienvenue sur la page À propos !".
+8. Ajoutez une nouvelle route `yaml_about` dans le fichier `config/routes.yaml` qui mappe l'URL `/about` à la méthode `about` du contrôleur `YamlController`.
+9. Testez votre application en accédant à l'URL `https://127.0.0.1:8000/about` dans votre navigateur, vous devriez voir le message "Bienvenue sur la page À propos !".
+10. Ajoutez un simple lien dans les réponses des deux méthodes pour naviguer entre les deux pages.
 
 Envoyez-moi le code à `gitweb@cf2m.be` de votre contrôleur `src\Controller\HomeController.php` et `templates\home\index.html.twig` une fois que vous avez terminé l'exercice.
 
