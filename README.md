@@ -18,6 +18,8 @@ Cours de Symfony 7.3 (lors de l'installation) aux WebDev 2025.
   - [Les annotations de route](#les-annotations-de-route)
 - [Le moteur de templates Twig](#le-moteur-de-templates-twig)
         - [Exercice 3](#exercice-3)
+- [Les routes avancées et les vues Twig](#les-routes-avancées-et-les-vues-twig)
+        - [Exercice 4](#exercice-4)
 
   
 
@@ -476,10 +478,11 @@ Et dans le template Twig `templates/twig/index.html.twig` :
 
 {% block title %}{{ title }}{% endblock %}
 
-{% block nav %}
+{% block nav %} {# on doit réécrire la navigation #}
     <!-- Navigation moderne pour le front -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
         <div class="container">
+            {# chemin vers la page d'accueil en utilisant path() #}
             <a class="navbar-brand fw-bold" href="{{ path('homepage')}}">
                 <i class="bi bi-newspaper me-2"></i>Mon Blog
             </a>
@@ -488,6 +491,7 @@ Et dans le template Twig `templates/twig/index.html.twig` :
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    {# boucle sur les menus passés depuis le contrôleur #}
                     {% for title, path in menus %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path }}">{{ title }}</a>
@@ -505,13 +509,36 @@ Et dans le template Twig `templates/twig/index.html.twig` :
 {% block main %}
     <div class="row">
         <div class="col-12">
-            <p>Contenu principal de la page d'accueil.</p>
+            <p>{{ description }}</p>
         </div>
     </div>
 {% endblock %}
 
 {% block aside %}{% endblock %}
 ```
+
+Pour les paramètres dans les routes, regardez la documentation : [Routing with parameters](https://symfony.com/doc/current/routing.html#route-parameters)
+
+Commencez ensuite l'exercice 4.
+
+[Retour au menu](#menu)
+
+#### Exercice 4
+1. Partez du projet `SymfonyExercice3` créé précédemment.
+2. Remplacez le contrôleur `TwigController` par se trouvant dans `exercices/exercice4/TwigController.php`.
+3. Mettez les 2 fichiers de vues Twig `templates/twig/article.html.twig` et `templates/twig/index.html.twig` dans le dossier `templates/twig/` de votre projet.
+4. Testez votre application en accédant à l'URL racine `/` pour voir la liste des articles.
+5. Cliquez sur un `articles` pour accéder à sa page détaillée via l'URL `/articles`.
+6. Créez une vue Twig `templates/twig/article.html.twig` qui affiche les détails de l'article en utilisant les variables passées depuis le contrôleur, dont l'id.
+7. Testez votre application en accédant à l'URL `/article/{id}` où `{id}` est l'identifiant de l'article que vous souhaitez afficher.
+8. Créez une nouvelle route `/about` dans le contrôleur `TwigController` qui affiche une page "À propos" avec du contenu statique.
+9. Créez une vue Twig `templates/twig/about.html.twig` pour la page "À propos".
+10. Créez une nouvelle route `/contact` dans le contrôleur `TwigController` qui affiche une page de contact avec un formulaire simple (nom, email, message), pas fonctionnelle.
+11. Créez une vue Twig `templates/twig/contact.html.twig` pour la page de contact.
+12. Testez votre application en accédant aux URL `/about` et `/contact` pour voir les pages correspondantes.
+
+Envoyez-moi le code à `gitweb@cf2m.be` dans `Teams` de votre contrôleur `src\Controller\TwigController.php` et les 5 vues du dossier `twig` une fois que vous avez terminé l'exercice.
+
 
 [Retour au menu](#menu)
 
