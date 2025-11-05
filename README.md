@@ -561,14 +561,14 @@ L'exercice 5 suivant vous guidera à travers la création d'un nouveau projet Sy
 
 #### Exercice 5
 
-Créez un nouveau projet Symfony webapp nommé `SymfonyExercice5` :
+1. Créez un nouveau projet Symfony webapp nommé `SymfonyExercice5` :
 
 ```bash
 symfony new SymfonyExercice5 --webapp
 cd SymfonyExercice5
 ```
 
-Nous allons créer un fichier `.env.local` en copiant le fichier `.env` et en le renommant `.env.local` :
+2. Créez un fichier `.env.local` en copiant le fichier `.env` et en le renommant `.env.local` :
 
 ```bash
 cp .env .env.local
@@ -584,7 +584,7 @@ Dans le fichier `.env.local`, vous pouvez définir des variables d'environnement
 APP_SECRET=votre_cle_secrete_ici
 ```
 
-Pour obtenir une clé secrète de 64 caractères, vous pouvez utiliser la commande suivante dans votre terminal :
+3. Pour obtenir une clé secrète de 64 caractères, vous pouvez utiliser la commande suivante dans votre terminal :
 
 ```bash
 php -r 'echo bin2hex(random_bytes(32));'
@@ -592,13 +592,13 @@ php -r 'echo bin2hex(random_bytes(32));'
 openssl rand -hex 32
 ```
 
-Et remplacez `votre_cle_secrete_ici` par la clé générée **uniquement** dans votre fichier `.env.local`.
+4.  remplacez `votre_cle_secrete_ici` par la clé générée **uniquement** dans votre fichier `.env.local`.
 
 C'est important pour la `sécurité` de votre application, notamment pour la `gestion des sessions` et des `tokens CSRF`.
 
 Nous utiliserons `MariaDB` pour la base de données. Assurez-vous que MariaDB ou MySQL est installé et en cours d'exécution sur votre machine locale.
 
-Changeons la ligne de connexion à la base de données dans le fichier `.env.local` :
+5. Changez la ligne de connexion à la base de données dans le fichier `.env.local` :
 
 ```dotenv
 # DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
@@ -621,7 +621,7 @@ Il faut ensuite vérifier les paramètres de connexion à la base de données :
 - `serverVersion` : version du serveur de base de données (à adapter selon votre version de MariaDB/MySQL, cette information se trouve dans la commande `SELECT VERSION();` dans MariaDB/MySQL ou via `phpMyAdmin`)
 - `charset` : jeu de caractères utilisé (utf8mb4 recommandé pour MySQL/MariaDB)
 
-##### Choisissez sym_exe_05 comme nom de base de données
+6. Choisissez sym_exe_05 comme nom de base de données
 
 ```bash
 sym_exe_05
@@ -629,7 +629,7 @@ sym_exe_05
 
 Dès que vous avez configuré correctement votre connexion vers votre serveur de base de données, vous pouvez créer la base de données avec la commande suivante :
 
-##### Création de la base de données avec Doctrine ORM
+7. Créez la base de données avec Doctrine ORM
 
 [Documentation officielle sur la configuration de la base de données](https://symfony.com/doc/current/doctrine.html#configuring-the-database)
 
@@ -639,13 +639,13 @@ php bin/console doctrine:database:create
 
 Vous devriez obtenir : `Created database sym_exe_05 for connection named default`
 
-##### Création d'un contrôleur de base pour tester la connexion à la base de données
+8. Création d'un contrôleur de base pour tester la connexion à la base de données
 
 ```bash
 php bin/console make:controller HomeController
 ```
 
-Changez le code de `src/Controller/HomeController.php` :
+9. Changez le code de `src/Controller/HomeController.php` :
 
 ```php
 <?php
@@ -671,7 +671,7 @@ final class HomeController extends AbstractController
 }   
 ```
 
-Accédez à l'URL racine `/` pour tester la connexion à la base de données.
+10. Accédez à l'URL racine `/` pour tester la connexion à la base de données.
 
 Envoyez-moi le code à `gitweb@cf2m.be` dans `Teams` de votre contrôleur `src\Controller\HomeController.php` et votre fichier `.env.local` (ceci reste un exercice !) une fois que vous avez terminé.
 
