@@ -604,7 +604,7 @@ Il faut ensuite vérifier les paramètres de connexion à la base de données :
 - `serverVersion` : version du serveur de base de données (à adapter selon votre version de MariaDB/MySQL, cette information se trouve dans la commande `SELECT VERSION();` dans MariaDB/MySQL ou via `phpMyAdmin`)
 - `charset` : jeu de caractères utilisé (utf8mb4 recommandé pour MySQL/MariaDB)
 
-#### Choisissez sym_exe_05 comme nom de base de données
+##### Choisissez sym_exe_05 comme nom de base de données
 
 ```bash
 sym_exe_05
@@ -612,16 +612,27 @@ sym_exe_05
 
 Dès que vous avez configuré correctement votre connexion vers votre serveur de base de données, vous pouvez créer la base de données avec la commande suivante :
 
+##### Création de la base de données avec Doctrine ORM
+
 ```bash
 php bin/console doctrine:database:create
 ```
 
 Vous devriez obtenir : `Created database sym_exe_05 for connection named default`
 
-Envoyez-moi le code à `gitweb@cf2m.be` dans `Teams` de fichier `.env.local` (celà reste un exercice) une fois que vous avez terminé cette étape.
+##### Création d'un contrôleur de base pour tester la connexion à la base de données
+
+```bash
+php bin/console make:controller HomeController
+```
+
 
 [Retour au menu](#menu)
 
-## Création de la base de données avec Doctrine ORM
+## Création d'une entité et manipulation des données avec Doctrine ORM
+Nous allons créer une entité `Article` pour représenter les articles de blog dans notre application Symfony.
 
-Nous allons utili
+```bash
+php bin/console make:entity Article
+```
+
