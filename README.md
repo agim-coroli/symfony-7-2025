@@ -724,3 +724,42 @@ php bin/console doctrine:migrations:migrate
 Cliquez sur `yes` pour confirmer l'exécution de la migration. Vous devriez voir un message indiquant que la table `article` a été créée avec succès.
 5. Vérifiez que la table `article` a été créée dans la base de données en utilisant un outil comme `phpMyAdmin`. Vous pouvez constater que les champs sont présents, mais ne respectent pas encore toutes les contraintes (unsigned, valeur par défault etc). Il existe 2 autres tables dans la base de données : `migration_versions`, qui contiendra l'historique des migrations, et `messenger_messages` qui ne sera utile que si on utilise la base de donnée comme file d'attente.
 6. Modifiez l'entité `Article` pour ajouter les contraintes suivantes :
+```php
+// src/Entity/Article.php
+#...
+#[ORM\Id]
+#[ORM\GeneratedValue]
+# ajout d'options pour rendre l'id non signé
+#[ORM\Column(options: ['unsigned' => true])]
+private ?int $id = null;
+
+#[ORM\Column(length: 120)]
+private ?string $title = null;
+
+# champs unique
+#[ORM\Column(length: 125, unique: true)]
+private ?string $slug = null;
+
+#[ORM\Column(type: Types::TEXT)]
+private ?string $content = null;
+
+#[ORM\Column]
+private ?\DateTimeImmutable $publishedAt = null;
+
+# valeur par défaut à false
+#[ORM\Column(options: ['default' => false])]
+private ?bool $isPublished = null;
+#...
+```
+7. Générez une nouvelle migration pour appliquer les modifications à la table `article` :
+
+```bash
+php bin/console make:migration
+```
+8. Exécutez la migration pour appliquer les changements à la base de données :
+
+```bash
+php bin/console doctrine:migrations:migrate
+```
+Cliquez sur `yes` pour confirmer l'exécution de la migration. Vous devriez voir un message indiquant que la table `article` a été modifiée avec succès.
+9. Vérifiez que les contraintes ont été appliquées à la table `article` dans la base de données en utilisant un outil comme `phpMyAdmin`. Vous devriez constater que les champs ont les contraintes spécifiées (id non signé, slug unique, isPublished avec valeur par défaut false).
