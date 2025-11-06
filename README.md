@@ -770,6 +770,48 @@ Cliquez sur `yes` pour confirmer l'exécution de la migration. Vous devriez voir
 php bin/console dbal:run-sql 'SELECT * FROM article'
 ```
 
-Envoyez-moi le code à `gitweb@cf2m.be` dans `Teams` de votre contrôleur `src\Controller\HomeController.php` et votre fichier `.env.local` (ceci reste un exercice !) une fois que vous avez terminé.
+11. Modifiez le contrôleur `HomeController` pour que la méthode `index` récupère et affiche la liste des articles publiés depuis la base de données.
+
+```php
+// src/Controller/HomeController.php
+# ...
+use App\Entity\Article;
+# ...
+    public function index(EntityManagerInterface $entityManager): Response
+    {
+        // Récupération des articles publiés depuis la base de données
+        $articleRepository = $entityManager->getRepository(Article::class);
+        $articles = $articleRepository->findBy(['isPublished' => true]);
+        return $this->render('home/index.html.twig', [
+            'articles' => $articles,
+        ]);
+    }
+# ...
+```
+
+12. Créez une vue Twig `templates/home/index.html.twig` pour afficher le nombre des articles publiés.
+
+```twig 
+{# templates/home/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Articles Publiés{% endblock %}
+
+{% block body %}
+    <h1>Articles Publiés</h1>
+    <p>Nombre d'articles publiés : {{ articles|length }}</p>
+    <ul>
+        {% for article in articles %}
+            <li>{{ article.title }} - Publié le {{ article.publishedAt|date('d/m/Y') }}</li>
+        {% else %}
+            <li>Aucun article publié.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+```
+
+13. Bonus: retirez le pluriel si un seul article est publié dans la vue Twig (utilisation du `set`).
+
+Envoyez-moi le code à `gitweb@cf2m.be` dans `Teams` de votre contrôleur `src\Controller\HomeController.php` et votre fichier `templates/home/index.html.twig`  une fois que vous avez terminé.
 
 [Retour au menu](#menu)
