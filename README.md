@@ -721,3 +721,6 @@ Vous devriez obtenir un fichier de migration dans le dossier `migrations/`. Il c
 ```bash
 php bin/console doctrine:migrations:migrate
 ```
+Cliquez sur `yes` pour confirmer l'exécution de la migration. Vous devriez voir un message indiquant que la table `article` a été créée avec succès.
+5. Vérifiez que la table `article` a été créée dans la base de données en utilisant un outil comme `phpMyAdmin`. Vous pouvez constater que les champs sont présents, mais ne respectent pas encore toutes les contraintes (unsigned, valeur par défault etc). Il existe 2 autres tables dans la base de données : `migration_versions`, qui contiendra l'historique des migrations, et `messenger_messages` qui ne sera utile que si on utilise la base de donnée comme file d'attente.
+6. Modifiez l'entité `Article` pour ajouter les contraintes suivantes :
