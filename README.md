@@ -684,4 +684,40 @@ Nous allons créer une entité `Article` pour représenter les articles de blog 
 php bin/console make:entity Article
 ```
 
+Choisissez les champs suivants pour l'entité `Article` :
 
+- `title` (type: string, length: 255, nullable: false)
+
+- `slug` (type: string, length: 255, nullable: false)
+
+- `content` (type: text, nullable: false)
+
+- `publishedAt` (type: datetime_immutable, nullable: true)
+
+- `isPublished` (type: boolean, nullable: false)
+
+Pour chaque champ, Symfony vous demandera de spécifier le type de données, la longueur (si applicable), et si le champ peut être nul ou non.
+
+[Documentation officielle sur la création d'entités avec Doctrine ORM](https://symfony.com/doc/current/doctrine.html#creating-an-entity-class)
+
+Comme vous pouvez le voir, Symfony génère automatiquement les getters et setters pour chaque champ de l'entité dans le fichier `src/Entity/Article.php`.
+
+Ces champs représentent les propriétés de l'entité `Article`, et les méthodes `get` et `set` permettent d'accéder et de modifier ces propriétés. Les annotations au-dessus des propriétés définissent la manière dont chaque champ est mappé à la base de données, et Doctrine est souple vis-à-vis de ces définitions.
+
+[Retour au menu](#menu)
+
+#### Exercice 6
+1. Partez du projet `SymfonyExercice5` créé précédemment.
+2. Créez une entité `Article` avec les champs demandés ci-dessus.
+3. Générez une migration pour créer la table `article` dans la base de données :
+
+```bash
+php bin/console make:migration
+```
+
+Vous devriez obtenir un fichier de migration dans le dossier `migrations/`. Il contient le code SQL nécessaire pour créer la table `article` avec les colonnes correspondantes aux champs de l'entité.
+4. Exécutez la migration pour appliquer les changements à la base de données :
+
+```bash
+php bin/console doctrine:migrations:migrate
+```
