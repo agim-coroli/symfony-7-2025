@@ -63,7 +63,7 @@ Continuez dans `SymfonyExercice5`.
    ```bash
    composer require symfony/security-bundle
    ```
-2 . **Création de l'entité User** : 
+2. **Création de l'entité User** : 
     Utilisez la commande suivante pour créer une entité User :
     ```bash
     php bin/console make:user
@@ -79,8 +79,9 @@ Les fichiers suivants seront créés/modifiés :
    - `src/Repository/UserRepository.php` : Le repository pour gérer les utilisateurs
    - `config/packages/security.yaml` : Le fichier de configuration de la sécurité
 
-   2. **Amélioration de l'entité User** :
-      Ouvrez le fichier `src/Entity/User.php` et ajoutez des propriétés supplémentaires si nécessaire, comme l'email, les rôles, etc. Voici un exemple simple :
+2. **Amélioration de l'entité User** :
+   Ouvrez le fichier `src/Entity/User.php` et ajoutez des propriétés supplémentaires si nécessaire, comme l'email, les rôles, etc. Voici un exemple simple :
+
 ```php
 <?php
 
@@ -248,18 +249,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 ```
 
-N'oubliez pas de regénérer les setters et getters si vous ajoutez de nouvelles propriétés avec la commande :
+N'oubliez pas de régénérer les setters et getters si vous ajoutez de nouvelles propriétés avec la commande :
 ```bash
 php bin/console make:entity --regenerate
 ```
 
-4. Créez la migration pour mettre à jour la base de données avec la commande
-5. Mettez à jour la base de données
+4. **Créez la migration** pour mettre à jour la base de données avec la commande
 
-   3. **Configuration de la sécurité** :
+5. **Mettez à jour la base de données**
+
+6. **Configurez le formulaire de connexion** :
+   Utilisez la commande suivante pour créer un formulaire de connexion :
+   ```bash
+   php bin/console make:auth
+   ```
+   Sélectionnez "Login form authenticator" et suivez les instructions pour configurer le formulaire de connexion.
+
+7. **Créez un formulaire de connexion**
+
+```bash
+php bin/console make:security:form-login
+````
+puis `SecurityController` et /logout 'yes', test `yes`.
+
+8. **Configuration de la sécurité** :
       Modifiez le fichier `config/packages/security.yaml` pour définir les règles de sécurité. Voici
 
-       un exemple de configuration basique :
+9. **Vérifiez les routes** :
+   En tapant la commande suivante, vous pouvez vérifier que les routes de connexion et de déconnexion sont bien configurées :
+   ```bash
+   php bin/console debug:router
+   ```
+10. **Regardez le début du fichier `config/packages/security.yaml`**
+
 ```yaml
 security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
@@ -272,7 +294,51 @@ security:
             entity:
                 class: App\Entity\User
                 property: username
-                #....
-```
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                enable_csrf: true
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+# ...
 
-        
+  # On donne l'accès à /admin uniquement aux ROLE_ADMIN
+    access_control:
+      - { path: ^/admin, roles: ROLE_ADMIN }
+      # - { path: ^/profile, roles: ROLE_USER }
+```
+11. **Changez le chemin vers admin pour le crud des articles** :
+    
+Transformez `/article` en `/admin/article` dans le fichier `src/Controller/ArticleController.php` :
+
+```php
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Article;
+use App\Form\ArticleType;
+use App\Repository\ArticleRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+#  ici changez la route de /article en /admin/article
+// #[Route('/article')]
+#[Route('/admin/article')]
+final class ArticleController extends AbstractController
+{
+#...
+}
+```
+12. **Créez un utilisateur administrateur** :
+   Utilisez la console Symfony pour créer un utilisateur avec le rôle `ROLE_ADMIN`. Vous pouvez le faire en créant un script ou en utilisant une commande personnalisée.
+13. 
