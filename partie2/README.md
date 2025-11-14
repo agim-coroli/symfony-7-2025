@@ -72,7 +72,7 @@ Continuez dans `SymfonyExercice5`.
     - choisissez User comme nom de classe
     - acceptez Doctrine ORM Entity
     - choisissez username comme identifiant
-    - hashez le mot de passe
+    - hachez le mot de passe
 
 Les fichiers suivants seront créés/modifiés :
    - `src/Entity/User.php` : L'entité User avec les propriétés définies
