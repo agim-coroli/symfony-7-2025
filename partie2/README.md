@@ -111,14 +111,14 @@ Les fichiers suivants seront créés/modifiés :
 
 namespace App\Entity;
 
-use App\Repository\User2Repository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: User2Repository::class)]
+#[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_USERNAME', fields: ['username'])]
-class User2 implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -365,10 +365,11 @@ En cliquant sur `Gérer les articles`, vous devriez être redirigé vers la page
    - Vous devriez maintenant avoir accès à la gestion des articles.
 
 Envoyez-moi le code à `gitweb@cf2m.be` dans `Teams` les fichiers suivants
-- votre contrôleur `config/packages/security.yaml`
+- votre configuration `config/packages/security.yaml`
+- votre contrôleur `src/Controller/SecurityController.php`
 - votre entité `src/Entity/User.php`
 - votre vue `templates/inc/_nav.html.twig`
 - votre vue `templates/security/login.html.twig`
-- votre vue `templates/article/_form.html.twig` une fois que vous avez terminé.
+
 
 [Retour au menu](#menu)
