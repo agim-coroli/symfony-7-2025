@@ -241,12 +241,6 @@ php bin/console make:entity --regenerate
 
 7. **Configurez le formulaire de connexion** :
    Utilisez la commande suivante pour créer un formulaire de connexion :
-   ```bash
-   php bin/console make:auth
-   ```
-   Sélectionnez "Login form authenticator" et suivez les instructions pour configurer le formulaire de connexion.
-
-7. **Créez un formulaire de connexion**
 
 ```bash
 php bin/console make:security:form-login
@@ -254,48 +248,70 @@ php bin/console make:security:form-login
 puis `SecurityController` et /logout 'yes', test `yes`.
 
 8. **Configuration de la sécurité** :
-      Modifiez le fichier `config/packages/security.yaml` pour définir les règles de sécurité. Voici
+      Modifiez le fichier `config/packages/security.yaml` pour définir les règles de sécurité. Voici un exemple de configuration où l'accès à `/admin` est restreint aux utilisateurs avec le rôle `ROLE_ADMIN` :
+```yaml
+security:
+  # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+  # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+  providers:
+    # used to reload user from session & other features (e.g. switch_user)
+    app_user_provider:
+      entity:
+        class: App\Entity\User
+        property: username
+    # used to reload user from session & other features (e.g. switch_user)
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      form_login:
+        login_path: app_login
+        check_path: app_login
+        enable_csrf: true
+      logout:
+        path: app_logout
+        # where to redirect after logout
+        # target: app_any_route
+        # where to redirect after logout
+        # target: app_any_route
+
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#the-firewall
+
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true
+
+  # Easy way to control access for large sections of your site
+  # Note: Only the *first* access control that matches will be used
+  access_control:
+    - { path: ^/admin, roles: ROLE_ADMIN }
+    # - { path: ^/profile, roles: ROLE_USER }
+
+when@test:
+  security:
+    password_hashers:
+      # By default, password hashers are resource intensive and take time. This is
+      # important to generate secure password hashes. In tests however, secure hashes
+      # are not important, waste resources and increase test times. The following
+      # reduces the work factor to the lowest possible values.
+      Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+        algorithm: auto
+        cost: 4 # Lowest possible value for bcrypt
+        time_cost: 3 # Lowest possible value for argon
+        memory_cost: 10 # Lowest possible value for argon
+
+```
 
 9. **Vérifiez les routes** :
    En tapant la commande suivante, vous pouvez vérifier que les routes de connexion et de déconnexion sont bien configurées :
    ```bash
    php bin/console debug:router
    ```
-10. **Regardez le début du fichier `config/packages/security.yaml`**
 
-```yaml
-security:
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
-    password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
-    providers:
-        # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
-            entity:
-                class: App\Entity\User
-                property: username
-    firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        main:
-            form_login:
-                login_path: app_login
-                check_path: app_login
-                enable_csrf: true
-            logout:
-                path: app_logout
-                # where to redirect after logout
-                # target: app_any_route
-# ...
-
-  # On donne l'accès à /admin uniquement aux ROLE_ADMIN
-    access_control:
-      - { path: ^/admin, roles: ROLE_ADMIN }
-      # - { path: ^/profile, roles: ROLE_USER }
-```
-11. **Changez le chemin vers admin pour le crud des articles** :
+10. **Changez le chemin vers admin pour le crud des articles** :
     
 Transformez `/article` en `/admin/article` dans le fichier `src/Controller/ArticleController.php` :
 
@@ -321,5 +337,38 @@ final class ArticleController extends AbstractController
 }
 ```
 12. **Créez un utilisateur administrateur** :
-   Utilisez la console Symfony pour créer un utilisateur avec le rôle `ROLE_ADMIN`. Vous pouvez le faire en créant un script ou en utilisant une commande personnalisée.
-13. 
+   Ouvrez `PHPMyMyAdmin` ou un autre outil de gestion de base de données et insérez un nouvel utilisateur nommé `admin` avec le rôle `ROLE_ADMIN` écrit sous ce format : ["ROLE_ADMIN"]. Assurez-vous de hacher le mot de passe `admin123` avant de l'insérer dans la base de données. Vous pouvez utiliser la commande suivante pour hacher un mot de passe via la console Symfony :
+    ```bash
+    php bin/console security:hash-password
+    ````
+13. **Vérifiez que vous pouvez vous connecter** :
+En cliquant sur `Gérer les articles`, vous devriez être redirigé vers la page de connexion. Utilisez les identifiants de l'utilisateur administrateur que vous venez de créer pour vous connecter.
+
+14. **Ajoutez un lien de connexion/déconnexion** dans le template `templates/inc/_nav.html.twig` :
+
+```twig
+{# templates/inc/_nav.html.twig #}
+<nav>
+    <a href="{{ path('accueil') }}">Accueil</a>
+    <a href="{{ path('app_article_index') }}">Gestion des Articles</a>
+    {% if is_granted('ROLE_ADMIN') %}
+       | Bienvenue {{ app.user.username }}  | <a href="{{ path('app_logout') }}">Déconnexion</a>
+    {% else %}
+        <a  href="{{ path('app_login') }}">Connexion</a>
+    {% endif %}
+</nav>
+``` 
+
+15. **Testez la fonctionnalité** :
+   - Accédez à la page de gestion des articles. Vous devriez être redirigé vers la page de connexion.
+   - Connectez-vous avec les identifiants de l'utilisateur administrateur.
+   - Vous devriez maintenant avoir accès à la gestion des articles.
+
+Envoyez-moi le code à `gitweb@cf2m.be` dans `Teams` les fichiers suivants
+- votre contrôleur `config/packages/security.yaml`
+- votre entité `src/Entity/User.php`
+- votre vue `templates/inc/_nav.html.twig`
+- votre vue `templates/security/login.html.twig`
+- votre vue `templates/article/_form.html.twig` une fois que vous avez terminé.
+
+[Retour au menu](#menu)
