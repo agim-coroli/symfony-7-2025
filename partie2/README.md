@@ -10,7 +10,9 @@ Cours de Symfony 7.3 (lors de l'installation) aux WebDev 2025.
 - [Installation de PHP CS Fixer](#php-cs-fixer)
 - [Administration et sécurisation d'un utilisateur](#administration-et-sécurisation-dun-utilisateur)
         - [exercice 8](#exercice-8)
-- 
+- [Créations d'entités liées entre elles](#créations-dentités-liées-entre-elles)
+- [partie 3](../partie3/README.md)
+
 ## Mise à jour de Symfony
 
 Symfony 7.3.7 est la dernière version stable de Symfony le 16-11-2025.
@@ -373,3 +375,20 @@ Envoyez-moi le code à `gitweb@cf2m.be` dans `Teams` les fichiers suivants
 
 
 [Retour au menu](#menu)
+
+## Créations d'entités liées entre elles
+
+Pour la suite, nous allons créer un nouveau projet et y ajouter progressivement des entités liées entre elles pour illustrer les relations dans une base de données relationnelle.
+
+Nous allons créer les entités suivantes :
+- Catégorie (Category)
+- Article (Article)
+- Commentaire (Comment)
+- Utilisateur (User)
+
+Chaque entité aura des relations spécifiques avec les autres, illustrant les concepts de OneToMany, ManyToOne, et ManyToMany.
+
+[Retour au menu](#menu)
+
+## partie 3
+La suite dans [partie 3](../partie3/README.md)
