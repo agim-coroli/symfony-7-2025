@@ -378,7 +378,7 @@ Envoyez-moi le code à `gitweb@cf2m.be` dans `Teams` les fichiers suivants
 
 ## Créations d'entités liées entre elles
 
-Pour la suite, nous allons créer un nouveau projet et y ajouter progressivement des entités liées entre elles pour illustrer les relations dans une base de données relationnelle.
+Pour la suite, à partir de la partie 3, nous allons créer un nouveau projet et y ajouter progressivement des entités liées entre elles pour illustrer les relations dans une base de données relationnelle.
 
 Nous allons créer les entités suivantes :
 - Catégorie (Category)
