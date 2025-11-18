@@ -28,11 +28,19 @@ Modifiez le fichier `config/packages/doctrine.yaml` pour définir le `server_ver
 
 Créez la base de données en utilisant la commande Doctrine adéquate.
 
-Créez un contrôleur par défaut nommé `HomeController` avec une route `/` qui retourne un message "Bienvenue sur le blog Symfony de {TON PRENOM} !".
+Créez un contrôleur par défaut nommé `HomeController` avec une route `/` qui retourne un message en http (`Response`) "Bienvenue sur le blog Symfony de {TON PRENOM} !".
+
+Installez PHP CS Fixer et appliquez-le à votre code.
 
 Envoyez-moi le code 'lisible' à `gitweb@cf2m.be` dans `Teams` les fichiers suivants
 - votre configuration `.env.local`
 - votre contrôleur `src/Controller/HomeController.php`
+- votre configuration `config/packages/doctrine.yaml`
+- le fichier `.php-cs-fixer.dist.php`
+
+N'oubliez pas de remplacer `{TON PRENOM}` par votre prénom réel.
+
+[Retour au menu de la partie 3](README.md)
 
 
 
