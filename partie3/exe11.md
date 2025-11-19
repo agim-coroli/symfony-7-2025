@@ -175,6 +175,12 @@ Exécutez PHP CS Fixer pour formater le code de l'entité et des autres fichiers
 11. **Exécutez la migration**
 12. **Vérifiez la base de données**
 
-Le résultat en image devrait maintenant être correct :
+Le résultat en image devrait maintenant être correct, répétez les opérations en cas d'erreurs :
 
 ![Migration Article 2](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/db-article-2.png)
+
+
+**Envoyez-moi le lien vers votre repository github** avec la branche `exe11` finie à `gitweb@cf2m.be` dans `Teams`.
+
+[Retour au menu de la partie 3](README.md)
+

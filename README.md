@@ -30,7 +30,7 @@ Cours de Symfony 7.3 (lors de l'installation) aux WebDev 2025.
 - [CRUD des articles](#crud-des-articles)
         - [Exercice 7](#exercice-7)
 - [Suite dans la partie 2](/partie2/README.md)
-  
+- [Partie 3](/partie3/README.md)  
 
 ## Cours pour les webdev 2025
 
