@@ -385,6 +385,7 @@ Nous allons créer les entités suivantes :
 - Article (Article)
 - Commentaire (Comment)
 - Utilisateur (User)
+- Tag (Tag)
 
 Chaque entité aura des relations spécifiques avec les autres, illustrant les concepts de OneToMany, ManyToOne, et ManyToMany.
 
