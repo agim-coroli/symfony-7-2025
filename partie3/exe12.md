@@ -67,3 +67,24 @@ final class BlogController extends AbstractController
 Vous devriez retourner à la page de base telle que l'image ci-dessous lorsque vous accédez à la racine de votre application Symfony (http://localhost:8000/).
 
 ![front homepage](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/exe12debut.png)
+
+5. **Modifiez le fichier de test** :
+
+Nous avons généré un fichier de test pour ce contrôleur. Ouvrez le fichier `tests/Controller/BlogControllerTest.php` et examinez le code généré. Vous pouvez exécuter les tests pour vérifier que tout fonctionne correctement. Il faut modifier le test pour qu'il corresponde à notre route `/`.
+```php
+# tests/Controller/BlogControllerTest.php
+# ...
+# $client->request('GET', '/blog'); // doit devenir
+$client->request('GET', '/');
+# ...
+```
+
+6. **Exécutez les tests** :
+Utilisez la commande suivante pour exécuter les tests et vérifier que tout fonctionne correctement :
+
+```bash
+php bin/phpunit 
+```
+Vous devriez voir que le test passe avec succès : OK (1 test, 1 assertion)
+![phpunit exe12](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/exe12test.png)
+
