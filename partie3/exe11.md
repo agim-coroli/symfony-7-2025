@@ -186,7 +186,7 @@ php bin/console doctrine:migrations:execute --down YYYYMMDDHHMMSS
 ```
 (Remplacez `YYYYMMDDHHMMSS` par le numéro de version de la dernière migration que vous souhaitez annuler.) [documentation](https://symfony.com/bundles/DoctrineMigrationsBundle/current/index.html#usage)
 
-En cas de problème persistant, effacez le contenu du dossier `migrations/` ainsi que lee contenu de la table `doctrine_migration_versions` dans la base de données, puis recréez une nouvelle migration et exécutez-la.
+En cas de problème persistant, effacez le contenu du dossier `migrations/` ainsi que lee contenu de la table `doctrine_migration_versions` dans la base de données, puis recréez une nouvelle migration et exécutez-la. [Documentation sur les Columns](https://www.doctrine-project.org/projects/doctrine-orm/en/3.5/reference/attributes-reference.html#column) et [Documentation sur Doctrine dans Symfony](https://symfony.com/doc/current/doctrine.html)
 
 **Envoyez-moi le lien vers votre repository github** avec la branche `exe11` finie à `gitweb@cf2m.be` dans `Teams`.
 
