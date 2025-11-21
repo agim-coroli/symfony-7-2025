@@ -161,3 +161,28 @@ class Article
      }
 }
 ``` 
+8. **Créez une nouvelle migration** pour appliquer les modifications de la base de données liées à la création de l'entité Category et à la relation ManyToMany avec Article.
+
+   ```bash
+   php bin/console make:migration
+   ```
+9. **Exécutez la migration** pour mettre à jour la base de données.
+
+   ```bash
+    php bin/console doctrine:migrations:migrate
+    ```
+10. **Appliquez php-cs-fixer** pour formater le code de l'entité et des autres fichiers modifiés :
+
+    ```bash 
+    ./vendor/bin/php-cs-fixer fix
+    ```
+11. **Créez le CRUD** pour l'es 'entité Category en utilisant `make:crud` :
+
+    ```bash
+    php bin/console make:crud Category
+    ```
+    - Choisissez le nom du contrôleur : `CategoryController`.
+    - Acceptez la génération des tests unitaires (`PHPUnit`).
+    
+Vous devriez obtenir un **Success!** à la fin de la commande :
+![crud Category exe13](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/exe13crud.png)

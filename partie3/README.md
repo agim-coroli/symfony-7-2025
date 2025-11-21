@@ -18,4 +18,4 @@ Nous allons diviser cette partie en plusieurs exercices pratiques. L'objectif se
 - [Vue d'ensemble des entités et relations](db11.md) | schema des entités et relations qui seront créées dans les exercices suivants
 - [Exercice 11 : Création de la première entité Article](exe11.md) + modification de la table Article pour MariaDB 11
 - [Exercice 12 : Création d'une vue d'accueil](exe12.md) + Controleur BlogController + route homepage, template Twig par défaut et test unitaire
-- [Exercice 13 : Création de l'entité Category et relation ManyToMany avec Article](exe13.md)
+- [Exercice 13 : Création de l'entité Category et relation ManyToMany avec Article](exe13.md) + création des `CRUD` de Category et Article
