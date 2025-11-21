@@ -12,7 +12,7 @@ Nous continuerons le projet commencé dans les exercices précédents: `blog_sym
 
 ### Étapes à suivre :
 
-1. **Créez une branche git** nommée `exe13` depuis la branche `exe12` (après validation de la branche `exe12`) pour cet exercice.
+1. **Créez une branche git** nommée `exe13` depuis la branche `exe12` (après validation de la branche `exe12`) pour cet exercice. **N'oubliez pas de faire des commits régulièrement après chaque étape importante !**
 
    ```bash
    git checkout -b exe13
@@ -171,6 +171,11 @@ class Article
    ```bash
     php bin/console doctrine:migrations:migrate
     ```
+   
+Vous devriez obtenir dans la base de données les tables `category`, `article_category` (table de jointure `ManyToMany`) et `article` mise à jour :
+
+![DB `blog_symfony_{TON PRENOM}` exe13](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/exe13db.png)
+
 10. **Appliquez php-cs-fixer** pour formater le code de l'entité et des autres fichiers modifiés :
 
     ```bash 
@@ -182,7 +187,41 @@ class Article
     php bin/console make:crud Category
     ```
     - Choisissez le nom du contrôleur : `CategoryController`.
-    - Acceptez la génération des tests unitaires (`PHPUnit`).
+    - Acceptez la génération des tests unitaires (`PHPUnit`): `yes`.
     
 Vous devriez obtenir un **Success!** à la fin de la commande :
+
 ![crud Category exe13](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/exe13crud.png)
+
+12. **Créez le CRUD** pour l'entité Article en utilisant `make:crud` :
+
+    ```bash
+    php bin/console make:crud Article
+    ```
+    - Choisissez le nom du contrôleur : `ArticleController`.
+    - Acceptez la génération des tests unitaires (`PHPUnit`): `yes`.
+
+Vous devriez obtenir un **Success!** à la fin de la commande :
+
+![crud Article exe13](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/exe13crud-article.png)
+
+13. **Vérifiez les routes** générées pour les deux CRUD en utilisant la commande suivante :
+
+    ```bash
+    php bin/console debug:router
+    ```
+Vous devriez voir des routes pour les opérations CRUD sur les entités Category et Article.
+
+14. **Testez les CRUD** en démarrant le serveur Symfony et en accédant aux routes correspondantes dans votre navigateur :
+
+    ```bash
+    symfony server:start
+    ```
+
+    - Pour Category : `http://localhost:8000/category/`
+    - Pour Article : `http://localhost:8000/article/`
+
+**Envoyez-moi le lien vers votre repository github** avec la branche `exe13` finie à `gitweb@cf2m.be` dans `Teams`.
+
+[Retour au menu de la partie 3](README.md)
+ou
