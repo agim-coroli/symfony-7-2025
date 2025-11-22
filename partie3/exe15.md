@@ -87,7 +87,7 @@ Vous devriez pouvoir insérer un article avec 0, 1 ou plusieurs catégories asso
             ->add('description')
             ->add('articles', EntityType::class, [
                 'class' => Article::class,
-                'choice_label' => 'id',
+                'choice_label' => 'title',
                 'multiple' => true,
                 # pour avoir des checkbox
                 'expanded' => true,
@@ -99,7 +99,26 @@ Vous devriez pouvoir insérer un article avec 0, 1 ou plusieurs catégories asso
 ```
 4. **Testez les formulaires** en accédant aux pages de création et d'édition des Articles et des Categories via les routes correspondantes (par exemple, `/admin/article/new` et `/admin/category/new`).
 
-   - Celà fonctionne, mais nous obtenons seulement l'id des entités associées dans les formulaires. Nous allons améliorer celà dans l'étape suivante.
+   - Celà fonctionne, mais nous obtenons seulement l'id des entités associées dans les formulaires. Nous allons améliorer celà dans l'étape suivante :
+
+    - Modifiez les options `choice_label` dans les deux formulaires pour afficher des informations plus pertinentes (par exemple, le titre de l'Article ou de la Category, donc `title`) au lieu de l'id.
+
+5. ** Mettez l'heure par défaut dans le contrôleur `ArticleController`** :
+
+   - Ouvrez le fichier `src/Controller/ArticleController.php`.
+   - Dans la méthode `new()`, avant de créer le formulaire, ajoutez le code suivant pour définir l'heure actuelle comme valeur par défaut pour le champ `createAt` :
+    ```php
+    $article = new Article();
+    $form = $this->createForm(ArticleType::class, $article);
+    $form->handleRequest($request);
+    // on met le jour par défaut :
+    $article->setCreateAt(new \DateTimeImmutable());
+    ```
+6. ** Retirez le champ `createAt` du formulaire `ArticleType`** car il est maintenant défini automatiquement dans le contrôleur :
+
+   - Ouvrez le fichier `src/Form/ArticleType.php`.
+   - Supprimez ou commentez la ligne qui ajoute le champ `createAt` dans la méthode `buildForm()`.
+   
 
 [Retour au menu de la partie 3](README.md)
 ou
