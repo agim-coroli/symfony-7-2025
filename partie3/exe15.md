@@ -114,10 +114,29 @@ Vous devriez pouvoir insérer un article avec 0, 1 ou plusieurs catégories asso
     // on met le jour par défaut :
     $article->setCreateAt(new \DateTimeImmutable());
     ```
-6. ** Retirez le champ `createAt` du formulaire `ArticleType`** car il est maintenant défini automatiquement dans le contrôleur :
+
+[A trouver](https://symfony.com/doc/current/forms.html)
+
+
+6** Sur le formulaire d'insertion d'un Article, empêchez l'apparition du champ `createAt`** :
+
+    - Ouvrez le fichier `src/Controller/ArticleController.php`.
+    - Dans la méthode `new()`, lors de la création du formulaire, passez une option personnalisée pour indiquer qu'il s'agit d'un formulaire de création :
+```php
+$form = $this->createForm(ArticleType::class, $article, ['is_create' => true]);
+```
 
    - Ouvrez le fichier `src/Form/ArticleType.php`.
-   - Supprimez ou commentez la ligne qui ajoute le champ `createAt` dans la méthode `buildForm()`.
+   - Dans la méthode `buildForm()`, modifiez l'ajout du champ `createAt` pour qu'il ne soit ajouté que si l'option `is_create` n'est pas définie ou est fausse :
+```php
+if (empty($options['is_create'])) {
+    $builder->add('createAt', null, [
+        'widget' => 'single_text',
+    ]);
+}
+```
+
+
    
 
 [Retour au menu de la partie 3](README.md)
