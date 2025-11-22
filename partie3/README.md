@@ -22,3 +22,4 @@ Nous allons diviser cette partie en plusieurs exercices pratiques. L'objectif se
 - [Exercice 13 : Création de l'entité Category et relation ManyToMany avec Article](exe13.md) + création des `CRUD` de Category et Article
 - [Exercice 14 : Modification des liens vers les CRUD](exe14.md)
 - [Exercice 15 : CRUDs M2M fonctionnels](exe15.md)
+- [Exercice 16 : Affichage dans l'accueil](exe16.md)

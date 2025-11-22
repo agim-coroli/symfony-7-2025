@@ -108,36 +108,64 @@ Vous devriez pouvoir insérer un article avec 0, 1 ou plusieurs catégories asso
    - Ouvrez le fichier `src/Controller/ArticleController.php`.
    - Dans la méthode `new()`, avant de créer le formulaire, ajoutez le code suivant pour définir l'heure actuelle comme valeur par défaut pour le champ `createAt` :
     ```php
+   // nouvel article
+   #[Route('/new', name: 'app_article_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
     $article = new Article();
-    $form = $this->createForm(ArticleType::class, $article);
+    $form = $this->createForm(ArticleType::class, $article,
+    // ajout des options pour le formulaire, ici ne pas afficher le champ createAt
+        ["is_create"=>true]);
     $form->handleRequest($request);
     // on met le jour par défaut :
     $article->setCreateAt(new \DateTimeImmutable());
     ```
 
-[A trouver](https://symfony.com/doc/current/forms.html)
 
+6 **Sur le formulaire d'insertion d'un Article, empêchez l'apparition du champ `createAt`** :
 
-6** Sur le formulaire d'insertion d'un Article, empêchez l'apparition du champ `createAt`** :
-
-    - Ouvrez le fichier `src/Controller/ArticleController.php`.
-    - Dans la méthode `new()`, lors de la création du formulaire, passez une option personnalisée pour indiquer qu'il s'agit d'un formulaire de création :
+- Ouvrez le fichier `src/Form/ArticleType.php`.
+- Dans la méthode `configureOptions()`, ajoutez une nouvelle option `is_create` avec une valeur par défaut de `false` :
 ```php
-$form = $this->createForm(ArticleType::class, $article, ['is_create' => true]);
+// src/Form/ArticleType.php
+// ..
+// si ce n'est pas un nouvel article, on affiche la date de création
+
+        $builder
+            ->add('title')
+            ->add('slug')
+            ->add('content');
+        // si on veut créer un article, pas de champ createAt  
+        // sinon on affiche le champ createAt
+        if (empty($options['is_create'])&& $options['is_create'] === false) {
+            $builder->add('createAt', null, [
+                'widget' => 'single_text',
+            ])
+            ;
+        }
+public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Article::class,
+             // déclarer l'option ici, par défaut non
+            'is_create' => false,
+        ]);
+    }
 ```
 
-   - Ouvrez le fichier `src/Form/ArticleType.php`.
-   - Dans la méthode `buildForm()`, modifiez l'ajout du champ `createAt` pour qu'il ne soit ajouté que si l'option `is_create` n'est pas définie ou est fausse :
-```php
-if (empty($options['is_create'])) {
-    $builder->add('createAt', null, [
-        'widget' => 'single_text',
-    ]);
-}
-```
+7. **Testez à nouveau les formulaires** pour vous assurer que tout fonctionne correctement :
 
+8. **Appliquez php-cs-fixer** pour formater le code des fichiers modifiés :
+   
+    ```bash
+    ./vendor/bin/php-cs-fixer fix
+    ```  
+
+**Envoyez-moi le lien vers votre repository github** avec la branche `exe15` finie à `gitweb@cf2m.be` dans `Teams`.
 
    
 
 [Retour au menu de la partie 3](README.md)
 ou
+
+[Exercice 16 : Affichage dans l'accueil](exe16.md)
