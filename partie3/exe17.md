@@ -7,7 +7,7 @@
 
 ## Exercice 17 : Affichage dans l'accueil
 
-Nous continuerons le projet commencé dans les exercices précédents: `blog_symfony_{TON PRENOM}`.
+Nous continuerons le projet commencé dans les exercices précédents : `blog_symfony_{TON PRENOM}`.
 
 ### Étapes à suivre :
 
@@ -16,7 +16,7 @@ Nous continuerons le projet commencé dans les exercices précédents: `blog_sym
    ```bash
    git checkout -b exe17
    ```
-
+2. Cherchez un template Twig approprié pour la page d'accueil dans le dossier `templates/`. Si vous n'en avez pas encore, créez-en un nommé `home.html.twig`.
 
 
 8. **Appliquez php-cs-fixer** pour formater le code des fichiers modifiés :
