@@ -168,4 +168,4 @@ public function configureOptions(OptionsResolver $resolver): void
 [Retour au menu de la partie 3](README.md)
 ou
 
-[Exercice 16 : Affichage dans l'accueil](exe16.md)
+[Exercice 16 : Création des slugs à la volée](exe16.md)
