@@ -16,7 +16,9 @@ Nous continuerons le projet commencé dans les exercices précédents : `blog_sy
    ```bash
    git checkout -b exe17
    ```
-2. Cherchez un template Twig approprié pour la page d'accueil dans le dossier `templates/`. Si vous n'en avez pas encore, créez-en un nommé `home.html.twig`.
+2. Cherchez un template approprié pour votre projet de blog. Moi je vais prendre pour exemple [ce template gratuit](https://themewagon.com/themes/kelly/) de `themewagon`.
+
+Je vais mettre le lien dans le dossier
 
 
 8. **Appliquez php-cs-fixer** pour formater le code des fichiers modifiés :
