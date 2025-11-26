@@ -269,4 +269,4 @@ Il faut vraiment passer cette étape pour la suite !
 [Retour au menu de la partie 3](README.md)
 ou
 
-[Exercice 17 : Affichage dans l'accueil](exe17.md)
+[Exercice 18 : Création de la table User](exe18.md)
