@@ -189,6 +189,7 @@ class Article
 #...
 ```
 
+Votre formulaire et votre back-end respecterons ces règles !
 
 10. **Appliquez php-cs-fixer** pour formater le code des fichiers modifiés :
 
