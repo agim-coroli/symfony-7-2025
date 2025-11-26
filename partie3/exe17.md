@@ -245,11 +245,15 @@ Exemple de ma page d'accueil :
 </header>
 {% endblock %}
 {% block content %}
-<div class="example-wrapper">
-    <h1>Blog | Accueil</h1>
-    <h2>Bienvenue sur notre blog</h2>
-    <p>Ceci sera la page d'accueil de notre blog</p>
-</div>
+<main class="main">
+    <section id="hero" class="hero section">
+    <div class="container section-title">
+        <h1>Blog | Accueil</h1>
+        <h2>Bienvenue sur notre blog</h2>
+        <p>Ceci sera la page d'accueil de notre blog</p>
+    </div>
+    </section>
+</main>
 {% endblock %}
 
 ```
