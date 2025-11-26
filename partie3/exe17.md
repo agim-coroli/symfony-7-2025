@@ -257,7 +257,8 @@ Exemple de ma page d'accueil :
 ```
 
 Ce qui devrait donner cette image :
-![Accueil](![form bootstrap5](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/exe17-homepage1.png)
+
+![Accueil](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/exe17-homepage1.png)
 
 Cet exercice est de loin le plus difficile. Utilisez F12 pour voir les soucis javascript, images ou CSS, s'il y en a.
 
