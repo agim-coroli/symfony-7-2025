@@ -84,6 +84,9 @@ console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
    symfony server:start
    ```
 
+
+Suite bientôt
+
 **Envoyez-moi le lien vers votre repository github** avec la branche `exe16` finie à `gitweb@cf2m.be` dans `Teams`.
 
    
