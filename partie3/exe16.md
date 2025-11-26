@@ -142,7 +142,7 @@ Ce qui donnera un rendu comme ceci :
 
 9. **Attention à la sécurité**, il s'agit de front-end !, il faudrait pour cela sécuriser cette entrée pour éviter les failles `XSS`:
 
-Vous pouvez ajouter un `strip_tags` et `trim` dans les setters `setSlug` des 2 entités, sachez toute fois que par défaut les injections et failles XSS sont gérées par défaut via `Doctrine` (injections) et `twig`(XSS).
+Vous pourriez ajouter un `strip_tags` et `trim` dans les setters `setSlug` des 2 entités, sachez toute fois que par défaut les injections et failles XSS sont gérées par défaut via `Doctrine` (injections) et `twig`(XSS).
 
 Exemple :
 
@@ -155,7 +155,7 @@ public function setSlug(string $slug): static
     }
 ```
 
-Il en va de même pour les autres champs, mais `Symfony` faisant le gros du travail, à vous de voir la nécessité en effectuant des tests !
+Il en va de même pour les autres champs, mais `Symfony` faisant le gros du travail (via ValidationListener.php), à vous de voir la nécessité en effectuant des tests !
 
 10. **Appliquez php-cs-fixer** pour formater le code des fichiers modifiés :
 

@@ -48,7 +48,13 @@ import './styles/main.css';
 console.log('Bravo Mikhawa !');
 ```
 
-5. **'assets/app.js'**
+Pour vérifier ce qui est chargé :
+
+```bash
+php bin/console debug:asset-map
+```
+
+5. **`Importmap`: assets/app.js**
 
 Voici une copie de mon app.js :
 
@@ -220,7 +226,7 @@ Exemple :
 {% extends 'blog_template.html.twig' %}
 ```
 
-Cet exercice est de loin le plus difficile. Utilisez F12 pour voir les soucis javascript, si il y en a.
+Cet exercice est de loin le plus difficile. Utilisez F12 pour voir les soucis javascript, s'il y en a.
 
 Il faut vraiment passer cette étape pour la suite !
 
