@@ -23,4 +23,4 @@ Nous allons diviser cette partie en plusieurs exercices pratiques. L'objectif se
 - [Exercice 14 : Modification des liens vers les CRUD](exe14.md)
 - [Exercice 15 : CRUDs M2M fonctionnels](exe15.md)
 - [Exercice 16 : Création des slugs à la volée](exe16.md)
-- [Exercice 17 : Affichage dans l'accueil](exe17.md) + gestion d'un template d'accueil avec liste des articles
+- [Exercice 17 : Affichage dans l'accueil](exe17.md) + gestion d'un template d'accueil avec liste des articles + AssetMapper

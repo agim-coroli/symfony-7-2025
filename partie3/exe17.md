@@ -9,6 +9,8 @@
 
 Nous continuerons le projet commencé dans les exercices précédents : `blog_symfony_{TON PRENOM}`.
 
+Attention cet exercice est difficile, nous allons utiliser `AssetMapper` pour importer la vue. N'hésitez pas à lire [la documentation](https://symfony.com/doc/current/frontend/asset_mapper.html)
+
 ### Étapes à suivre :
 
 1. **Créez une branche git** nommée `exe17` depuis la branche `exe16` (après validation de la branche `exe16`) pour cet exercice. **N'oubliez pas de faire des commits régulièrement après chaque étape importante !**
@@ -26,7 +28,7 @@ Il vaut mieux que ce ne soit pas un `one page` pour faciliter l'intégration.
 
    - Copiez les fichiers CSS dans `assets/styles/` | dans mon cas, je mets le `main.css` du projet Kelly.
    - Créez un dossier `assets/scripts/`, mettez-y les fichiers JS du template (par exemple `main.js`).
-   - Copiez les images dans `public/images/` (ou un sous-dossier)
+   - Copiez les images dans `assets/images` (ou un sous-dossier)
 
 4. **Modifiez le fichier `assets/app.js`** pour inclure les nouveaux fichiers CSS et JS dans la compilation :
 
@@ -101,7 +103,7 @@ console.log('Coucou, ça fonctionne ;-) Mikhawa');
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-
+    {# crée un lien temporaire depuis le dossier assets #}
     <link href="{{ asset('images/favicon.png') }}" rel="icon">
     <link href="{{ asset('images/apple-touch-icon.png') }}" rel="apple-touch-icon">
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -217,6 +219,10 @@ Exemple :
 {# templates/blog/index.html.twig #}
 {% extends 'blog_template.html.twig' %}
 ```
+
+Cet exercice est de loin le plus difficile. Utilisez F12 pour voir les soucis javascript, si il y en a.
+
+Il faut vraiment passer cette étape pour la suite !
 
 **Envoyez-moi le lien vers votre repository github** avec la branche `exe16` finie à `gitweb@cf2m.be` dans `Teams`.
 
