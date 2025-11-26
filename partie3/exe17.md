@@ -151,10 +151,6 @@ et effectuez ces premiers changements :
         <li><a  disabled>Administration :</a></li>
         <li><a href="{{ path('app_article_index') }}">Articles</a></li>
         <li><a href="{{ path('app_category_index') }}">Catégories</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-
-        <li><a href="contact.html">Contact</a></li>
     </ul>
     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 </nav>
@@ -259,6 +255,9 @@ Exemple de ma page d'accueil :
 {% endblock %}
 
 ```
+
+Ce qui devrait donner cette image :
+![Accueil](![form bootstrap5](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/exe17-homepage1.png)
 
 Cet exercice est de loin le plus difficile. Utilisez F12 pour voir les soucis javascript, images ou CSS, s'il y en a.
 
