@@ -9,7 +9,7 @@
 
 Nous continuerons le projet commencé dans les exercices précédents : `blog_symfony_{TON PRENOM}`.
 
-En plus de la création de la table User
+En plus de la création de la table User, nous mettrons les catégories dans le menu `dropdown`
 
 ### Étapes à suivre :
 

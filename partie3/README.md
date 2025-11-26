@@ -24,4 +24,4 @@ Nous allons diviser cette partie en plusieurs exercices pratiques. L'objectif se
 - [Exercice 15 : CRUDs M2M fonctionnels](exe15.md)
 - [Exercice 16 : Création des slugs à la volée](exe16.md) + Assert
 - [Exercice 17 : Affichage dans l'accueil](exe17.md) + gestion d'un template d'accueil avec liste des articles + AssetMapper
-- [Exercice 18 : Création de la table User](exe18.md)
+- [Exercice 18 : Création de la table User](exe18.md) + catégories dans le menu dropdown
