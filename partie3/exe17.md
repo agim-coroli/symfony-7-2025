@@ -218,12 +218,40 @@ Nommez le `templates/inc/footer.inc.php.twig` et mettez-y provisoirement :
 
 ```
 
-10. **Il faudra l'étendre à toutes vos vues :
+10. **Il faudra l'étendre à `toutes vos vues`** :
 
-Exemple :
+Commencez par la page d'accueil !
+
+Exemple de ma page d'accueil :
 ```twig
 {# templates/blog/index.html.twig #}
 {% extends 'blog_template.html.twig' %}
+
+{% block title %}{{ parent() }} Accueil{% endblock %}
+{# pour l'accueil #}
+{% block mybody %}index-page{% endblock %}
+{% block header %}
+<header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+
+        <a href="{{ path('homepage') }}" class="logo d-flex align-items-center me-auto me-xl-0">
+            <h1 class="sitename">Mikhawa</h1>
+        </a>
+        {% block menu %}
+            {% include 'inc/menu.inc.php.twig' %}
+        {% endblock %}
+
+    </div>
+</header>
+{% endblock %}
+{% block content %}
+<div class="example-wrapper">
+    <h1>Blog | Accueil</h1>
+    <h2>Bienvenue sur notre blog</h2>
+    <p>Ceci sera la page d'accueil de notre blog</p>
+</div>
+{% endblock %}
+
 ```
 
 Cet exercice est de loin le plus difficile. Utilisez F12 pour voir les soucis javascript, s'il y en a.
