@@ -30,7 +30,7 @@ php bin/console make:stimulus-controller slugify
    - Choisissez `js` comme langage.
    - Les autres options par ne sont pas nécessaires, appuyez sur `Entrée` pour les laisser par défaut.
 
-Vous obtindrez un **Success!** à la fin de la commande et la création du fichier suivant :
+Vous obtiendrez un **Success!** à la fin de la commande et la création du fichier suivant :
 
 ```bash
  created: assets/controllers/slugify_controller.js
@@ -135,10 +135,29 @@ twig:
     form_themes: ['bootstrap_5_layout.html.twig']
 ```
 
+
+
 Ce qui donnera un rendu comme ceci :
 ![form bootstrap5](https://raw.githubusercontent.com/WebDevCF2m2025/symfony-7-2025/refs/heads/main/exercices/exe17-bootstrap.png)
 
-8. **Appliquez php-cs-fixer** pour formater le code des fichiers modifiés :
+9. **Attention à la sécurité**, il s'agit de front-end !, il faudrait pour cela sécuriser cette entrée pour éviter les failles `XSS`:
+
+Vous pouvez ajouter un `strip_tags` et `trim` dans les setters `setSlug` des 2 entités, sachez toute fois que par défaut les injections et failles XSS sont gérées par défaut via `Doctrine` (injections) et `twig`(XSS).
+
+Exemple :
+
+```php
+public function setSlug(string $slug): static
+    {
+        $this->slug = strip_tags(trim($slug));
+
+        return $this;
+    }
+```
+
+Il en va de même pour les autres champs, mais `Symfony` faisant le gros du travail, à vous de voir la nécessité en effectuant des tests !
+
+10. **Appliquez php-cs-fixer** pour formater le code des fichiers modifiés :
 
 ```bash
 ./vendor/bin/php-cs-fixer fix
