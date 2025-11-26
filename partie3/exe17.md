@@ -80,12 +80,106 @@ console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 </html>
 ```
 
-   ```bash
-   symfony server:start
-   ```
+7. **Créez le menu dans `templates/inc`** - 
 
+Nommez le `templates/inc/menu.inc.php.twig`
+et effectués ces premiers changements :
 
-Suite bientôt
+```twig
+{# templates/inc/menu.inc.php.twig #}
+<nav id="navmenu" class="navmenu">
+    <ul>
+        <li><a href="{{ path('homepage') }}" class="active">Accueil</a></li>
+        <li class="dropdown"><a href="#"><span>Catégories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+                <li><a href="#">Dropdown 1</a></li>
+                <li><a href="#">Dropdown 2</a></li>
+                <li><a href="#">Dropdown 3</a></li>
+                <li><a href="#">Dropdown 4</a></li>
+            </ul>
+        </li>
+        <!-- lien non cliquable -->
+        <li><a  disabled>Administration :</a></li>
+        <li><a href="{{ path('app_article_index') }}">Articles</a></li>
+        <li><a href="{{ path('app_category_index') }}">Catégories</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+</nav>
+
+```
+
+8. **Créez le footer dans `templates/inc`**`
+
+Nommez le `templates/inc/footer.inc.php.twig` et mettez-y provisoirement :
+
+```twig
+{# templates/inc/footer.inc.php.twig #}
+<footer id="footer" class="footer light-background">
+
+    <div class="container">
+        <div class="copyright text-center ">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Kelly</strong> <span>All Rights Reserved<br></span></p>
+        </div>
+        <div class="social-links d-flex justify-content-center">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you've purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href=“https://themewagon.com>ThemeWagon
+        </div>
+    </div>
+
+</footer>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+```
+
+9. **Créez le template de base pour le site** nommé `templates/blog_template.html.twig`.
+
+```twig
+
+{# templates/blog_template.html.twig #}
+
+{# on étend base.html.twig #}
+{% extends 'base.html.twig' %}
+
+{# on va modifier le title #}
+{% block title %}Blog |{% endblock %}
+
+{# et réécrire le bloc body pour placer le menu dedans #}
+{% block body %}
+    {% block header %}
+        {% block menu %}
+{% include 'inc/menu.inc.php.twig' %}
+        {% endblock %}
+    {% endblock %}
+    {% block content %}{% endblock %}
+    {% block footer %}{% include 'inc/footer.inc.php.twig' %}{% endblock %}
+{% endblock %}
+
+```
+
+10. **Il faudra l'étendre à toutes vos vues :
+
+Exemple :
+```twig
+{# templates/blog/index.html.twig #}
+{% extends 'blog_template.html.twig' %}
+```
 
 **Envoyez-moi le lien vers votre repository github** avec la branche `exe16` finie à `gitweb@cf2m.be` dans `Teams`.
 
