@@ -121,7 +121,7 @@ export default class extends Controller {
 
    - Accédez à la page de création ou d'édition d'un article (par exemple, `/admin/article/new`) et d'une catégorie (par exemple, `/admin/category/new`).
    - Tapez un titre dans le champ `title` et vérifiez que le champ `slug` se remplit automatiquement avec une version "slugifiée" du titre.
-   - Allez `modifier` un article ou une catégorie existante et vérifiez que le slug se met à jour lorsque vous modifiez le titre!
+   - Allez `modifier` un article ou une catégorie existante et vérifiez que le slug se met à jour lorsque vous modifiez le titre !
 
 7. **Testez à nouveau les formulaires** pour vous assurer que tout fonctionne correctement
 

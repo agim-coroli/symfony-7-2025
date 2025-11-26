@@ -9,7 +9,7 @@
 
 Nous continuerons le projet commencé dans les exercices précédents : `blog_symfony_{TON PRENOM}`.
 
-Attention cet exercice est difficile, nous allons utiliser `AssetMapper` pour importer la vue. N'hésitez pas à lire [la documentation](https://symfony.com/doc/current/frontend/asset_mapper.html)
+En plus de la création de la table User
 
 ### Étapes à suivre :
 

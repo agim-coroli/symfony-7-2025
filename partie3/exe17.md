@@ -24,11 +24,13 @@ Je vais mettre le lien dans le dossier [exemple Kelly](https://github.com/WebDev
 
 Il vaut mieux que ce ne soit pas un `one page` pour faciliter l'intégration.
 
-3. **Utilisez le dossier `asset` pour intégrer `à la volée` les fichiers CSS, JS, images, polices, etc.** du template choisi dans les dossiers appropriés de votre projet Symfony :
+3. **Utilisez le dossier `assets` pour intégrer `à la volée` les fichiers CSS, JS, images, polices, etc.** du template choisi dans les dossiers appropriés de votre projet Symfony :
 
    - Copiez les fichiers CSS dans `assets/styles/` | dans mon cas, je mets le `main.css` du projet Kelly.
    - Créez un dossier `assets/scripts/`, mettez-y les fichiers JS du template (par exemple `main.js`).
    - Copiez les images dans `assets/images` (ou un sous-dossier)
+   - Mettez les bibliothèques front dans le dossier `assets/vendor/` (elles se trouvent dans le projet Kelly `exercices/exercice17/Kelly-1.0.0/assets/vendor`). Ces fichiers auraient pu être appelés depuis `importmap.php`, en utilisant la commande `php bin/console importmap:require` suivie de chaque nom. Dans notre cas, j'ai juste copié ce qui était dèjà présent avec le template.
+
 
 4. **Modifiez le fichier `assets/app.js`** pour inclure les nouveaux fichiers CSS et JS dans la compilation :
 
@@ -42,7 +44,7 @@ import './script/main.js';
  * This file will be included onto the page via the importmap() Twig function,
  * which should already be in your base.html.twig.
  */
-import './styles/app.css';
+// import './styles/app.css';
 import './styles/main.css';
 
 console.log('Bravo Mikhawa !');
@@ -258,7 +260,7 @@ Exemple de ma page d'accueil :
 
 ```
 
-Cet exercice est de loin le plus difficile. Utilisez F12 pour voir les soucis javascript, s'il y en a.
+Cet exercice est de loin le plus difficile. Utilisez F12 pour voir les soucis javascript, images ou CSS, s'il y en a.
 
 Il faut vraiment passer cette étape pour la suite !
 
